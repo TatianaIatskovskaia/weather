@@ -5,7 +5,7 @@ const Weather = ({weather, message}) => {
         )
     } else {
         return (
-            <div className={'infoWeath'}>
+            <div className={'infoWeather'}>
                 <p>Location: {weather.country}, {weather.city}</p>
                 <p>Temp: {weather.temp}</p>
                 <p>Pressure: {weather.pressure}</p>
