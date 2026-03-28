@@ -1,12 +1,6 @@
-import {apiKey, baseURL} from "../utils/const.js";
-import {setMessage} from "./messageAction.js";
-
-export const PUT_WEATHER = 'PUT_WEATHER';
-
-export const putWeather = (weather) => ({
-    type: PUT_WEATHER,
-    payload: weather
-});
+import {apiKey, baseURL} from "../../utils/const.js";
+import {putWeather} from "../weather/weatherSlice.js";
+import {setMessage} from "../message/messageSlice.js";
 
 export const fetchWeather = (city) => {
     return (dispatch) => {
@@ -18,7 +12,7 @@ export const fetchWeather = (city) => {
                     city: data.name,
                     temp: data.main.temp,
                     pressure: data.main.pressure,
-                    sunset: new Date(data.sys.sunset * 1000),
+                    sunset: data.sys.sunset * 1000,
                 }))
                 dispatch(setMessage(''))
             })

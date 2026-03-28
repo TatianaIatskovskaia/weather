@@ -1,18 +1,20 @@
 import {useDispatch} from "react-redux";
-import {fetchWeather} from "../actions/weatherAction.js";
+import {fetchWeather} from "../feachers/api/weatherAction.js";
+import {useState} from "react";
 
 const Form = () => {
     const dispatch = useDispatch();
+    const [city, setCity] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const city = e.currentTarget.city.value.trim()
         dispatch(fetchWeather(city))
+        setCity('')
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" name={'city'}/>
+            <input type="text" value={city} onChange={e => setCity(e.target.value)}/>
             <button type="submit">Get Weather</button>
         </form>
     );
