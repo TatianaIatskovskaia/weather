@@ -5,7 +5,7 @@ import {logger} from "redux-logger/src/index.js";
 
 export const initialState = {
     weather: {},
-    message: ''
+    message: 'Enter city name...',
 }
 
 export const store = legacy_createStore(weatherReducer, initialState, applyMiddleware(thunk, logger))
